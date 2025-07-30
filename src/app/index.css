@@ -1,0 +1,344 @@
+/* Import External Resources */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Custom Dark Variant (Tailwind CSS) */
+@custom-variant dark (&:is(.dark *));
+
+/* Define Root Variables for Triam Color Scheme */
+:root {
+  --background: oklch(1 0 0); /* Light background for light mode */
+  --foreground: oklch(0.145 0 0); /* Dark text for light mode */
+  --radius: 0.625rem; /* Border radius for rounded elements */
+  
+  /* Triam Color Scheme */
+  --primary: oklch(0.205 0 0); /* Primary color (blue) */
+  --primary-foreground: oklch(0.985 0 0); /* Primary text color */
+  --secondary: oklch(0.2044 0 0); /* Secondary color (yellow) */
+  --secondary-foreground: oklch(0.205 0 0); /* Secondary text color */
+  --accent: oklch(0.97 0 0); /* Accent color (red) */
+  --accent-foreground: oklch(0.205 0 0); /* Accent text color */
+  --muted: oklch(0.97 0 0); /* Muted background color */
+  --muted-foreground: oklch(0.556 0 0); /* Muted text color */
+  --border: oklch(0.922 0 0); /* Border color */
+  --input: oklch(0.922 0 0); /* Input field color */
+  --ring: oklch(0.708 0 0); /* Ring color for focus */
+  --destructive: oklch(0.577 0.245 27.325); /* Destructive action color */
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;  /* Dark background for dark mode */
+    --foreground: #ededed;   /* Light text color for dark mode */
+    --primary: oklch(0.205 0 0); /* Primary color */
+    --secondary: oklch(0.2044 0 0); /* Secondary color */
+    --accent: oklch(0.97 0 0); /* Accent color */
+    --muted: oklch(0.269 0 0); /* Muted color */
+    --border: oklch(0.922 0 0); /* Dark border color */
+    --input: oklch(0.922 0 0); /* Input field color in dark mode */
+  }
+}
+
+/* General Styles */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Button Styling */
+button {
+  background-color: var(--primary); /* Primary color for button */
+  color: var(--primary-foreground); /* Text color on button */
+  padding: 10px 15px;
+  border: none;
+  border-radius: var(--radius); /* Use custom radius variable */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--secondary); /* Hover color */
+}
+
+button:focus {
+  outline: 2px solid var(--primary); /* Focused button outline */
+}
+
+/* Links */
+a {
+  color: var(--primary); /* Primary color for links */
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--secondary); /* Hover color for links */
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: var(--foreground); /* Table header with primary color */
+  color: var(--primary);
+  padding: 10px;
+}
+
+td {
+  background-color: var(--muted); /* Muted color for table cells */
+  color: var(--foreground);
+  padding: 10px;
+}
+
+tr:hover {
+  background-color: var(--accent); /* Accent color for row hover */
+  color: var(--background); /* Text color on hover */
+}
+
+/* Card Styling */
+.card {
+  background-color: var(--muted); /* Background for card */
+  color: var(--muted-foreground); /* Text color for card */
+  padding: 20px;
+  border-radius: var(--radius); /* Rounded corners */
+  border: 1px solid var(--border); /* Border around the card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  background-color: var(--accent); /* Hover effect for card */
+}
+
+/* Input Fields */
+input, textarea, select {
+  background-color: var(--primary); /* Muted background for inputs */
+  color: oklch(0.94 0.02 131.29);
+ /* Text color for inputs */
+  padding: 10px;
+  border-radius: var(--radius); /* Rounded borders */
+  border: 1px solid var(--border); /* Border color */
+  font-size: 16px;
+  width: 30%;
+  margin-bottom: 15px;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary); /* Border color on focus */
+}
+
+/* Form Labels */
+label {
+  font-size: 16px;
+  color: var(--foreground); /* Text color for labels */
+}
+
+/* Tag Colors */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 12px;
+  color: #fafafa;
+  border: 1px solid var(--border);
+}
+
+.tag-1 {
+  background: #8aa5ff;
+}
+
+.tag-2 {
+  background: #5889fe;
+}
+
+.tag-3 {
+  background: #0156c4;
+}
+
+.tag-4 {
+  background: #024095;
+}
+
+/* Priority Tags Styling */
+.priority-tag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px 8px;
+  gap: 6px;
+  width: 80px;
+  height: 25px;
+  border-radius: 4px;
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #fafafa;
+}
+
+.priority-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.priority-emergency,
+.priority-critical {
+  background: rgba(179, 19, 18, 0.15);
+}
+
+.priority-emergency .priority-dot,
+.priority-critical .priority-dot {
+  background: #b31312;
+}
+
+.priority-high {
+  background: rgba(210, 105, 30, 0.15);
+}
+
+.priority-high .priority-dot {
+  background: #d2691e;
+}
+
+.priority-normal,
+.priority-medium {
+  background: rgba(218, 165, 32, 0.15);
+}
+
+.priority-normal .priority-dot,
+.priority-medium .priority-dot {
+  background: #daa520;
+}
+
+.priority-low {
+  background: rgba(34, 139, 34, 0.15);
+}
+
+.priority-low .priority-dot {
+  background: #228b22;
+}
+
+/* Miscellaneous */
+hr {
+  border: 1px solid var(--border); /* Border color for horizontal rule */
+}
+
+.tiptap-editor,
+.tiptap-editor .ProseMirror {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent;
+}
+
+.tiptap-editor:focus,
+.tiptap-editor:active,
+.tiptap-editor .ProseMirror:focus,
+.tiptap-editor .ProseMirror:active {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Query builder filter styles */
+.ruleGroup {
+  background: #242424 !important;
+  border: 1px solid #363636 !important;
+}
+
+.queryBuilder-branches .ruleGroup::before,
+.queryBuilder-branches .ruleGroup::after,
+.queryBuilder-branches .rule::before,
+.queryBuilder-branches .rule::after {
+  border-color: #363636 !important;
+}
+.field-select-unique,
+.operator-select-unique,
+.value-select-unique,
+.value-input-unique {
+  background: #161616 !important;
+}
+
+.marker-sky-blue::marker {
+  color: #80a6b8; /* Highlight marker color */
+}
+
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto; /* Ensures uniform width for columns */
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border: 1px solid var(--border); /* Border around cells */
+}
+
+th {
+  background-color: var(--primary); /* Table header with primary color */
+  color: oklch(0.94 0.01 131.2);
+  text-transform: uppercase; /* Add uppercase text for headers */
+  font-weight: bold;
+}
+
+td {
+  background-color: var(--muted); /* Muted color for table cells */
+  color: var(--foreground);
+}
+
+tr:hover {
+  background-color: var(--accent); /* Accent color for row hover */
+  color: var(--background); /* Text color on hover */
+}
+
+/* Product Image Styling */
+td img {
+  max-width: 100px; /* Set a max width for the images */
+  height: auto;
+  object-fit: cover; /* Ensure image scales properly */
+  margin-right: 10px;
+  border-radius: 8px; /* Space between image and text */
+}
+
+.table-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between; /* Space between image and content */
+  align-items: center;
+  padding: 20px;
+  border-radius: var(--radius);
+  background-color: var(--muted);
+}
+
+.card img {
+  width: 150px; /* Control image size within card */
+  height: auto;
+  object-fit: contain;
+  margin-right: 20px;
+}
+
+/* General Card Layout */
+.card-content {
+  flex-grow: 1; 
+}
+
