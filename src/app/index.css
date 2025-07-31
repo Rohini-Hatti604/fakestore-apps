@@ -43,7 +43,7 @@
 
 /* General Styles */
 body {
-  background: var(--background);
+  background:  oklch(0.205 0 0);
   color: var(--foreground);
   font-family: "Rubik", sans-serif;
   font-optical-sizing: auto;
@@ -296,8 +296,8 @@ th {
 }
 
 td {
-  background-color: var(--muted); /* Muted color for table cells */
-  color: var(--foreground);
+  background-color:oklch(0.21 0 0);; /* Muted color for table cells */
+  color: oklch(0.94 0.01 131.21);
 }
 
 tr:hover {
